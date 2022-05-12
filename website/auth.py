@@ -13,8 +13,8 @@ def sign_up():
             flash("Username must be at least 4 characters long.", category="failure")
         elif len(password1) < 8:
             flash("Password must be at least 8 characters long.", category="failure")
-        elif ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] in password1:
-            flash("Password must contain at least one number.", category="failure")
+        elif not any(char.isdigit() for char in password1):
+            flash("Password must contain at least one digit.", category="failure")
         elif password1 != password2:
             flash("Passwords must match.", category="failure")
         else:
